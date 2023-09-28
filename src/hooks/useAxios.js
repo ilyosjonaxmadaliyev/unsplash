@@ -2,23 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function useAxios(url) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setIsError] = useState("");
-  const customFetch = async (url) => {
-    try {
-      setIsLoading(true);
-      const res = await axios(url);
-      setData(res.data.results);
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(error.message);
-      setIsLoading(true);
-    }
-  };
 
   useEffect(() => {
-    customFetch(url);
+    const customFetch = async () => {
+      try {
+        setIsLoading(true);
+        const request = await axios.get(url);
+        setData(request.data.results);
+        setIsLoading(false);
+      } catch (error) {
+        setIsError(error.message);
+        setIsLoading(true);
+      }
+    };
+    customFetch();
   }, [url]);
 
   return {

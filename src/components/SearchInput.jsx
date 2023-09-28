@@ -4,13 +4,12 @@ import { searchPhotos } from "../redux/photosSlice";
 
 function SearchInput() {
   const { query } = useSelector((state) => state.photoState);
-  const [state, setState] = useState(query);
+  const [keyword, setKeyword] = useState(query);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      dispatch( searchPhotos( state ) );
-      
+    dispatch(searchPhotos(keyword));
   };
 
   return (
@@ -19,10 +18,10 @@ function SearchInput() {
         <input
           type="text"
           placeholder="Search…"
-          className="input input-bordered input-sm w-60"
-          onChange={(e) => setState(e.target.value)}
+          className="input input-bordered input-sm w-full max-w-60"
+          onChange={(e) => setKeyword(e.target.value)}
         />
-        <button type="submit" className="btn btn-success btn-sm">
+        <button type="submit" className="btn btn-success btn-sm mr-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

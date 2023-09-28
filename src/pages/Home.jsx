@@ -9,6 +9,9 @@ function Home() {
   const { data, isLoading } = useAxios(
     `https://api.unsplash.com/search/photos?client_id=zcedffIShsDezHSOTBoM5yd0wPfMOea0rXS6rCFScow&per_page=30&query=${query}`
   );
+
+console.log(data);
+
   return (
     <>
       <div className="pb-6 w-full flex items-center justify-start">
@@ -25,9 +28,9 @@ function Home() {
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {isLoading ? (
-          <Loader item={data.length || 30} />
+          <Loader item={data?.length || 30} />
         ) : (
-          data.map((photo) => {
+          data?.map((photo) => {
             return (
               <Link to={`/photoinfo/${photo.id}`} key={photo.id}>
                 <ImagesCard photo={photo} />
