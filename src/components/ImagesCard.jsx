@@ -1,4 +1,4 @@
-import { FcList } from "react-icons/fc";
+import { FcDownload, FcList } from "react-icons/fc";
 
 function ImagesCard({ photo }) {
   return (
@@ -10,16 +10,21 @@ function ImagesCard({ photo }) {
           className="group-hover:opacity-50 h-60 object-cover w-full"
         />
         <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <p className="text-center p-2 cursor-pointer text-lg">
-            <FcList size={30} />
-          </p>
+          <div className="flex items-center gap-2 p-2 cursor-pointer text-lg">
+            <a href={photo.urls.full} target="blank">
+              <FcList size={30} />
+            </a>
+            <a href={photo.urls.small_s3} download>
+              <FcDownload size={30} />
+            </a>
+          </div>
         </div>
       </div>
       <div className="flex items-center gap-2 pt-1">
         <img
           src={photo.user.profile_image.large}
           alt=""
-          className="w-14 h-14 rounded-full"
+          className="w-12 h-12 rounded-full"
         />
         <div>
           <h4 className="text-black">{photo.user.name}</h4>
