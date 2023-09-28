@@ -12,7 +12,7 @@ console.log(data);
   return (
     <>
       <div className="max-w-[1000px] mx-auto">
-        {/* <div className="carousel h-[570px]">
+        <div className="carousel h-[570px]">
           <div id="item1" className="carousel-item w-full">
             <img src={data[0]?.urls?.full} className="w-full object-cover" />
           </div>
@@ -37,7 +37,7 @@ console.log(data);
               className="mx-auto my-auto w-60 h-80"
             />
           </div>
-        </div> */}
+        </div>
         <div className="grid grid-cols-3  sm:grid-cols-6 w-full py-2 gap-2 mx-auto">
           <a href="#item1" className="btn btn-sm sm:text-xs">
             full
